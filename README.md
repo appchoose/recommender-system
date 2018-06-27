@@ -26,3 +26,10 @@ conn.close()
 df['itemId'] = df['itemId'].map(item_mapping.set_index('item_str')['item_int'].to_dict().get)
 df['userId'] = df['userId'].map(user_mapping.set_index('user_str')['user_int'].to_dict().get)
 ```
+
+```python
+from recsys.tfutils import *
+
+write_tf_records(df, by = "itemId", output = "items_for_user")
+write_tf_records(df, by = "userId", output = "users_for_item")
+```
